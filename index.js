@@ -19,7 +19,7 @@ class Airplane {
   land() {
     this.isFlying = false;
   }
-} 
+}
 
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -41,8 +41,36 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+    this.contents = 0;
+  }
+  eat(food) {
+    this.food = food;
+    if (this.stomach.length < 10) {
+      this.stomach.push([this.food]);
+    } 
+  }
+  poop() {
+    this.contents = this.food % 10
+    this.stomach[0] = this.contents;
+    return this.stomach;
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
+  getStatus() {
+    return `${this.name} ate ${this.food} times and his stomach has ${this.stomach[0]} items in it.`;
+  }
 }
+
+// const p1 = new Person('Abbot', 38);
+// p1.eat(23);
+// console.log(p1.getStatus());
+
+
 
 /*
   TASK 2
@@ -146,11 +174,25 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+  if (Airplane) {
+    module.exports.Airplane = Airplane
+  }
+  if (Person) {
+    module.exports.Person = Person
+  }
+  if (Car) {
+    module.exports.Car = Car
+  }
+  if (Lambdasian) {
+    module.exports.Lambdasian = Lambdasian
+  }
+  if (Instructor) {
+    module.exports.Instructor = Instructor
+  }
+  if (Student) {
+    module.exports.Student = Student
+  }
+  if (ProjectManager) {
+    module.exports.ProjectManager = ProjectManager
+  }
 }
