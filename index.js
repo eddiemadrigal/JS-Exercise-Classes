@@ -163,6 +163,9 @@ class Instructor extends Lambdasian {
     this.subject = subject;
     return `${this.student} receives a perfect score on ${this.subject}`;
   }
+  modifyGrade() {
+    this.randomNum = Math.random();
+  }
 }
 
 /*
@@ -186,7 +189,7 @@ class Student extends Lambdasian {
     this.previousBackground = attributes.previousBackground;
     this.className = attributes.className;
     this.favSubjects = attributes.favSubjects;
-    this.grade = 100;
+    this.grade = 75;
   }
   listSubjects() {
     let subList = [];
