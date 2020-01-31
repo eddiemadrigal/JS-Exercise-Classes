@@ -89,13 +89,13 @@ function Car(model, milesPerGallon) {
   this.odometer = 0;
 }
 
-Car.prototype.fill = function(gallons) {
+Car.prototype.fill = function (gallons) {
   this.tank += gallons;
   this.milesAvailable = this.tank * this.milesPerGallon;
   console.log("Gas available: " + this.tank + " gallons.");
 };
 
-Car.prototype.drive = function(distance) {
+Car.prototype.drive = function (distance) {
   if (distance < this.milesAvailable) {
     this.distance = distance;
     this.milesAvailable -= this.distance;
@@ -122,8 +122,16 @@ Car.prototype.drive = function(distance) {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attributes) {
+    this.name = attributes.name,
+      this.age = attributes.age,
+      this.location = attributes.location
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
+
 
 /*
   TASK 4
