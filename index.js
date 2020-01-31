@@ -163,8 +163,15 @@ class Instructor extends Lambdasian {
     this.subject = subject;
     return `${this.student} receives a perfect score on ${this.subject}`;
   }
-  modifyGrade() {
-    this.randomNum = Math.random();
+  numberGen() {
+    this.myRandomNum = Math.random();
+    this.myRandomSign = Math.random();
+    if (this.myRandomSign >= .5) {
+      this.adjVal = (this.myRandomNum * 20).toFixed(0);
+    } else {
+      this.adjVal = -(this.myRandomNum * 20).toFixed(0);
+    }
+    return Number(this.adjVal);
   }
 }
 
@@ -203,6 +210,15 @@ class Student extends Lambdasian {
   sprintChallenge(subject) {
     this.subject = subject;
     return `${this.name} has begun sprint challenge on ${this.subject}`;
+  }
+  graduate(val) {
+    this.val = val;
+    this.grade += this.val;
+    if (this.grade >= 70) {
+      return `${this.name} graduated with a(n) ${this.grade}!! Congratulations!!`;
+    } else {
+      return `${this.name} earned a(n) ${this.grade} and has to go back to school`;
+    }
   }
 }
 
