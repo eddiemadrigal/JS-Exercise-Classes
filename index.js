@@ -48,29 +48,25 @@ class Person {
     this.contents = 0;
   }
   eat(food) {
-    this.food = food;
-    if (this.stomach.length < 10) {
-      this.stomach.push([this.food]);
-    } 
+    if (this.stomach.length != 10) {
+      this.food = food;
+      this.stomach.push(this.food);
+      if (this.stomach.length > 10) {
+        this.poop();
+      }
+      return `${this.food} was eaten.`;
+    }
   }
   poop() {
-    this.contents = this.food % 10
-    this.stomach[0] = this.contents;
-    return this.stomach;
+    this.stomach.length = 0;
   }
   toString() {
     return `${this.name}, ${this.age}`;
   }
   getStatus() {
-    return `${this.name} ate ${this.food} times and his stomach has ${this.stomach[0]} items in it.`;
+    return `${this.name} ate and has ${this.stomach.length} items in his stomach.`;
   }
 }
-
-// const p1 = new Person('Abbot', 38);
-// p1.eat(23);
-// console.log(p1.getStatus());
-
-
 
 /*
   TASK 2
@@ -86,9 +82,32 @@ class Person {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-class Car {
-
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+
+Car.prototype.fill = function(gallons) {
+  this.tank += gallons;
+  this.milesAvailable = this.tank * this.milesPerGallon;
+  console.log("Gas available: " + this.tank + " gallons.");
+};
+
+Car.prototype.drive = function(distance) {
+  if (distance < this.milesAvailable) {
+    this.distance = distance;
+    this.milesAvailable -= this.distance;
+    this.odometer += distance;
+    this.tank = distance / this.milesPerGallon;
+  } else {
+    this.odometer += this.milesAvailable;
+    this.tank = distance / this.milesPerGallon;
+    this.tank = 0;
+    return `I ran out of fuel at ${this.odometer}`;
+  }
+};
 
 /*
   TASK 3
