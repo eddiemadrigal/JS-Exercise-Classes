@@ -186,6 +186,7 @@ class Student extends Lambdasian {
     this.previousBackground = attributes.previousBackground;
     this.className = attributes.className;
     this.favSubjects = attributes.favSubjects;
+    this.grade = 100;
   }
   listSubjects() {
     let subList = [];
@@ -218,7 +219,25 @@ class Student extends Lambdasian {
 class ProjectManager extends Instructor {
   constructor(attributes) {
     super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
   }
+  standUp(channel) {
+    this.channel = channel;
+    return `${this.name} announces to ${this.channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject) {
+    this.student = student;
+    this.subject = subject;
+    return `${this.name} debugs ${this.student.name}'s code on ${this.subject}`;
+  }
+
+  grade(student, subject) {
+    this.student = student;
+    this.subject = subject;
+    return `${this.student.name} receives a perfect score on ${this.subject}`;
+  }
+
 }
 
 /*
